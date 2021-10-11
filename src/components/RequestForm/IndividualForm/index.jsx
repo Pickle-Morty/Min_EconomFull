@@ -95,19 +95,11 @@ const Form = ({
         validate={[validField]}
         placeholder="Выберите вид экономической деятельности"
       />
-      <Label>Оргнан к которому адресована заявка:</Label>
+      <Label>Орган к которому адресована заявка:</Label>
       <Field
         name="organId"
         component={SelectForm}
         options={changeSelect(organ)}
-        validate={[validField]}
-        placeholder="Выберите орган"
-      />
-      <Label>Оргнан к которому адресована заявка:</Label>
-      <Field
-        name="organId"
-        component={SelectForm}
-        options={changeSelect(user)}
         validate={[validField]}
         placeholder="Выберите орган"
       />

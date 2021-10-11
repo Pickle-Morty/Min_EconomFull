@@ -22,7 +22,7 @@ export const HeaderStyled = styled.header`
 
 export const LogoutBtn = styled.button`
   position: fixed;
-  bottom: 15px;
+  top: 8px;
   right: 15px;
   border: none;
   background: white;
@@ -33,5 +33,8 @@ export const LogoutBtn = styled.button`
   img {
     width: 25px;
     height: 25px;
+  }
+  @media screen and (max-width: ${STYLES.breakpoints.xl}) {
+    right: 70px;
   }
 `;

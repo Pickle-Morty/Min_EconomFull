@@ -14,11 +14,11 @@ export const registryAPI = {
         return response.data;
     },
     getRequest: async (id) => {
-        const response = await instance.get(`/get/${id}`);
+        const response = await instance.get(`/claim/get/${id}`);
         return response.data;
     },
     post: async (body) => {
-        const response = await instance.post("", body);
+        const response = await instance.post("/claim", body);
         return response.data;
     },
     postStatus: async (body) => {

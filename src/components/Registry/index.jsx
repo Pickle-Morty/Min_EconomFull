@@ -27,7 +27,7 @@ const Registry = ({
   const getUri = (sort, page) => {
     const data = { ...sort, pageNumber: page };
     const filter = (data) => {
-      let dataF = `${`claim/search?pageNumber=1&pageSize=6`}`
+      let dataF = `${`claim/search?pageNumber=${(data?.pageNumber || 1) - 1 }&pageSize=6`}`
       return dataF
     };
     return filter(data)
@@ -38,6 +38,7 @@ const Registry = ({
     console.log(uri)
     getRegistry(uri, token);
   }, [page]);
+  
 
 
   const searchRegistry = () => {
