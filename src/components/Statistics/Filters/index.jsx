@@ -5,7 +5,7 @@ import StatisticsForm from "./StatisticsForm/StatisticsForm";
 import StatisticsFilter from "./StatisticsForm/StatisticsFilter";
 
 
-const Filters = ({ labels, colors, interests, getByOrgan }) => {
+const Filters = ({ labels, colors, interests, getByOrgan , region, economicActivity}) => {
 
   
 
@@ -15,7 +15,7 @@ const Filters = ({ labels, colors, interests, getByOrgan }) => {
         Просмотрть заявки:
       </Title>
       
-      <StatisticsFilter />
+      <StatisticsFilter getByOrgan ={getByOrgan} region={region} economicActivity = {economicActivity} />
       {labels.map((item, i) => (
         <Row className="box" margin="0 0 20px">
           <Box

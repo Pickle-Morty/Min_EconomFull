@@ -8,20 +8,15 @@ import { StatisticsStyled } from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { getStatistics, getStatisticsByOrgan } from "../../redux/actions/statisticsActions";
 
-const Statistics = ({ interest, isFetching, total, exl,  }) => {
+const Statistics = ({ interest, isFetching, total, exl, region, economicActivity }) => {
   const token = useSelector(state => state.auth.info.accessToken);
   const dispatch = useDispatch();
-  
   useEffect(() => {
     dispatch(getStatistics(token))
   }, [token]);
 
-  const getByOrgan = (select) => {
-    console.log(select)
-    let organId = select.select
-    console.log(organId)
-    dispatch(getStatisticsByOrgan(token, organId))
-    
+  const getByOrgan = (data) => {
+    dispatch(getStatisticsByOrgan(token, data))
   }
 
   const interests = [interest.inProcessing, interest.underConsideration, interest.ready, interest.renouncement];
@@ -34,7 +29,7 @@ const Statistics = ({ interest, isFetching, total, exl,  }) => {
     <StatisticsStyled>
       <Container className="container" padding="61px 15px 0">
         <Row className="row" align="flex-start" justify="space-around">
-          <Filters labels={labels} colors={colors} interests={interests} getByOrgan = {getByOrgan} />
+          <Filters labels={labels} colors={colors} interests={interests} getByOrgan = {getByOrgan} region={region} economicActivity = {economicActivity}  />
           <Box width="500px" height="500px" className="grafic">
             <Graphics {...interest} colors={colors} />
           </Box>

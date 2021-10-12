@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const instance = axios.create({
-    baseURL: "http://212.42.122.154/api/v1/",
+    baseURL: "http://212.42.122.154/api/v1/claim",
 });
 
 export const registryAPI = {
@@ -14,11 +14,11 @@ export const registryAPI = {
         return response.data;
     },
     getRequest: async (id) => {
-        const response = await instance.get(`/claim/get/${id}`);
+        const response = await instance.get(`/get/${id}`);
         return response.data;
     },
     post: async (body) => {
-        const response = await instance.post("/claim", body);
+        const response = await instance.post("", body);
         return response.data;
     },
     postStatus: async (body) => {

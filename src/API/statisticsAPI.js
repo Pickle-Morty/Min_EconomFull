@@ -17,8 +17,14 @@ export const statisticsAPI = {
         });
         return { interest: response.data};
     },
-    getByOrgan: async (token, organId) => {
-        const response = await instance.get(`stat/region-activity?economicActivity.id=${organId}`, {
+    getByOrgan: async (token, data) => {
+        let uri = "stat/region-activity?"
+        Object.keys(data).map(key => {
+            if(data[key]){
+                uri = uri + `${key}.id=${data[key]}&`
+            }
+        })
+        const response = await instance.get(uri, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

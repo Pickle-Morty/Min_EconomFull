@@ -33,7 +33,7 @@ const Sort = ({ region, organ, activity, cause, sortRegistry, sort }) => {
           <Select
             options={activity}
             placeholder="Вид деятельности"
-            onChange={({ value }) => sortRegistry({ ...sort, activity: value })}
+            onChange={({ value }) => sortRegistry({ ...sort, economicActivity: value })}
           />
           <Select
             options={cause}

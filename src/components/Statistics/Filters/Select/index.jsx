@@ -1,6 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import { STYLES } from "../../../../constains";
+import { changeSelect } from "../../../../utils";
 
 const styles = {
   control: (styles) => ({
@@ -31,8 +32,8 @@ const styles = {
   }),
 };
 
-const SelectTag = ({ placeholder, options }) => {
-  return <Select options={options} placeholder={placeholder} styles={styles} />;
+const SelectTag = ({ placeholder, options, onChange }) => {
+  return <Select options={changeSelect(options)} placeholder={placeholder} styles={styles} onChange={onChange}/>;
 };
 
 export default SelectTag;

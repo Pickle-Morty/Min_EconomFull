@@ -7,12 +7,15 @@ import { Redirect } from "react-router-dom";
 const StatisticsContainer = () => {
   const statistics = useSelector((state) => state.statistics);
   const isAuth = useSelector((state) => state.auth.isAuth);
+  const region = useSelector((state) => state.fields.select.region);
+  const economicActivity = useSelector((state) => state.fields.select.activity);
+  
   
   
   
 
   return isAuth ? (
-    <Statistics {...statistics}  />
+    <Statistics region={region} economicActivity = {economicActivity} {...statistics}  />
   ) : (
     <Redirect to="login" />
   );

@@ -25,25 +25,30 @@ const Registry = ({
   const history = useHistory();
   const token = useSelector(state => state.auth.info.accessToken); // убрать нахуй // `/registry/${page}?economicActivity=${text}&fullname=${text}&inn=${text}`
   const getUri = (sort, page) => {
-    const data = { ...sort, pageNumber: page };
+    const data = { ...sort, pageNumber: page - 1 };
     const filter = (data) => {
-      let dataF = `${`claim/search?pageNumber=${(data?.pageNumber || 1) - 1 }&pageSize=6`}`
-      return dataF
+      let customUri = '/search?pageSize=6'
+      Object.keys(data).map(property => {
+        if (data[property]) {
+          console.log(property, ":", data[property])
+          customUri = customUri + `&${property}=${data[property]}`
+        }
+      })
+      return customUri
     };
     return filter(data)
   }
 
   useEffect(() => {
     let uri = getUri(sort, page)
-    console.log(uri)
     getRegistry(uri, token);
   }, [page]);
-  
+
 
 
   const searchRegistry = () => {
     const uri = getUri(sort, page)
-    history.push(`/registry/${page}` + uri)
+    history.push(`/registry` + uri)
     getRegistry(uri, token);
   };
 
