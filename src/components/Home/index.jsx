@@ -9,6 +9,8 @@ import {
 } from "../../styledComponents";
 import { STYLES } from "../../constains";
 import { HomeStyled } from "./style";
+import { getAuth } from "../../utils";
+import { AdminContainer } from "../../containers";
 
 const Home = () => {
   const links = [
@@ -19,39 +21,52 @@ const Home = () => {
     { text: "Правительство Кыргызской Республики", link: "/" },
     { text: "Бизнес-омбудсмен Кыргызской Республики", link: "/" },
   ];
-  return (
-    <HomeStyled>
-      <Container className="container">
-        <div className="content">
-          <Title className="title" size="35px" weight="700" color="white">
-            РАЗВИТЫЙ ПРЕДПРИНИМАТЕЛЬ – СИЛЬНОЕ ГОСУДАРСТВО
-          </Title>
-          <Text className="text" color="white" size="14px" weight="600">
-            АВТОМАТИЗИРОВАННЫЙ ЭЛЕКТРОННЫЙ РЕЕСТР ФАКТОРОВ, НЕБЛАГОПРИЯТНО
-            ВЛИЯЮЩИХ НА ЭКОНОМИЧЕСКУЮ ДЕЯТЕЛЬНОСТЬ СУБЪЕКТОВ ПРЕДПРИНИМАТЕЛЬСТВА
-            В КЫРГЫЗСКОЙ РЕСПУБЛИКЕ И ПРИНЯТИЯ МЕР ПО ИХ РЕШЕНИЮ
-          </Text>
-          <LinkButton
-            to="/requestForm"
-            weight="700"
-            size="15px"
-            padding="17px 57px"
-          >
-            Подать заявку
-          </LinkButton>
-        </div>
-        <Row className="row" column wrap>
-          {links.map(({ text, link }, i) => (
-            <div className="box" key={i}>
-              <A href={link} size="16px" weight="700" color={STYLES.blue}>
-                {text}
-              </A>
+
+  const role = getAuth.role()
+
+  switch (role) {
+    case "GLOBAL_ADMIN":
+      return <AdminContainer />
+    case 1:
+      return 
+
+    default:
+      return (
+        <HomeStyled>
+          <Container className="container">
+            <div className="content">
+              <Title className="title" size="35px" weight="700" color="white">
+                РАЗВИТЫЙ ПРЕДПРИНИМАТЕЛЬ – СИЛЬНОЕ ГОСУДАРСТВО
+                </Title>
+              <Text className="text" color="white" size="14px" weight="600">
+                АВТОМАТИЗИРОВАННЫЙ ЭЛЕКТРОННЫЙ РЕЕСТР ФАКТОРОВ, НЕБЛАГОПРИЯТНО
+                ВЛИЯЮЩИХ НА ЭКОНОМИЧЕСКУЮ ДЕЯТЕЛЬНОСТЬ СУБЪЕКТОВ ПРЕДПРИНИМАТЕЛЬСТВА
+                В КЫРГЫЗСКОЙ РЕСПУБЛИКЕ И ПРИНЯТИЯ МЕР ПО ИХ РЕШЕНИЮ
+                </Text>
+              <LinkButton
+                to="/requestForm"
+                weight="700"
+                size="15px"
+                padding="17px 57px"
+              >
+                Подать заявку
+                </LinkButton>
             </div>
-          ))}
-        </Row>
-      </Container>
-    </HomeStyled>
-  );
+            <Row className="row" column wrap>
+              {links.map(({ text, link }, i) => (
+                <div className="box" key={i}>
+                  <A href={link} size="16px" weight="700" color={STYLES.blue}>
+                    {text}
+                  </A>
+                </div>
+              ))}
+            </Row>
+          </Container>
+        </HomeStyled>
+      );
+  }
+
+
 };
 
 export default Home;

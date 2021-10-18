@@ -12,6 +12,7 @@ const setInfoUser = (payload) => ({ type: "CHANGE_AUTH", key: "info", payload })
 export const getUser = () => (dispatch) => {
     const data = JSON.parse(localStorage.getItem("auth"));
     if (data) {
+        console.log('пуф')
         const role = roleFilter(data.roles[0]);
         dispatch(setAuth(true));
         dispatch(setInfoUser(data));
@@ -34,10 +35,8 @@ export const login = (body) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-    authAPI.logout().then((data) => {
         localStorage.removeItem("auth");
-        dispatch(getUser());
-    }).catch((err) => console.log(err));
+        dispatch(getUser());      
 };
 
 

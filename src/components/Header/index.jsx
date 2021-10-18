@@ -8,13 +8,14 @@ import { Container, Row, Img, Button } from "../../styledComponents";
 import { HeaderStyled, LogoutBtn } from "./style";
 import logoutImg from "../../assets/images/logout.png";
 
+
 const Header = ({ role, logout, isAuth }) => {
   const [modal, setModal] = useState(false);
   const history = useHistory();
 
   const exitAccount = () => {
     logout();
-    history.push("/login");
+    history.push("/");
   };
   return (
     <HeaderStyled>

@@ -10,6 +10,7 @@ const LoginContainer = () => {
   const history = useHistory();
 
   const onSubmit = (data) => {
+    console.log(data)
     dispatch(login(data));
     history.push("/");
   };

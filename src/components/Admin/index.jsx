@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Container } from "../../styledComponents";
+import { Row, Container, Title } from "../../styledComponents";
 import Section from "./Section";
 import { Popup } from "../../common";
 import ModalForm from "./ModalForm";
@@ -7,8 +7,9 @@ import { AdminStyled } from "./style";
 import ModalRemove from "./ModalRemove";
 import CustomSection from "./CustomSection";
 import ModalUserForm from "./ModalUserForm";
+import { STYLES } from "../../constains";
 
-const Admin = ({ select, sendNewField, sendRemoveField,  sendNewUser }) => {
+const Admin = ({ select, sendNewField, sendRemoveField, sendNewUser }) => {
   const [modal, setModal] = useState(false);
   const [modalR, setModalR] = useState(false);
   const [userModal, setUserModal] = useState(false);
@@ -45,8 +46,8 @@ const Admin = ({ select, sendNewField, sendRemoveField,  sendNewUser }) => {
     },
 
   ];
- 
 
+  
   return (
     <AdminStyled>
       <Container padding="15px">
@@ -56,7 +57,7 @@ const Admin = ({ select, sendNewField, sendRemoveField,  sendNewUser }) => {
               setModal={setModal} setType={setType}
               modalR={modalR} setModalR={setModalR} />
           ))}
-           <CustomSection setUserModal = {setUserModal} />
+          <CustomSection setUserModal={setUserModal} />
         </Row>
         <ModalForm
           select={select}
@@ -73,7 +74,7 @@ const Admin = ({ select, sendNewField, sendRemoveField,  sendNewUser }) => {
           sendRemoveField={sendRemoveField}
           modalR={modalR}
           setModalR={setModalR} />
-          <ModalUserForm userModal = {userModal} select={select} setUserModal = {setUserModal}  sendNewUser = {sendNewUser} />
+        <ModalUserForm userModal={userModal} select={select} setUserModal={setUserModal} sendNewUser={sendNewUser} />
         <Popup active={modal} setActive={setModal} />
       </Container>
     </AdminStyled>

@@ -8,7 +8,7 @@ import Search from "./Search";
 import { useParams, useHistory } from "react-router-dom";
 import { Loader } from "../../common";
 import { RegisrtyStyled, LinkPage } from "./style";
-import { parseParams } from "../../utils";
+import { getAuth, parseParams } from "../../utils";
 import { useSelector } from "react-redux";
 
 const Registry = ({
@@ -23,7 +23,7 @@ const Registry = ({
 }) => {
   const { page } = useParams();
   const history = useHistory();
-  const token = useSelector(state => state.auth.info.accessToken); // убрать нахуй // `/registry/${page}?economicActivity=${text}&fullname=${text}&inn=${text}`
+  const token = getAuth.token(); 
   const getUri = (sort, page) => {
     const data = { ...sort, pageNumber: page - 1 };
     const filter = (data) => {

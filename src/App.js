@@ -13,16 +13,19 @@ import { checkToken, getUser, setAuth } from "./redux/actions/authActions";
 
 const App = () => {
   const dispatch = useDispatch();  
-  const auth = useSelector(state => state.auth.info.accessToken);
+  const auth = useSelector(state => state.auth);
   const fields = useSelector(state => state.fields)
   
   useEffect(() => {  
-    dispatch(checkToken())
-    dispatch(setAuth(false))
+    dispatch(checkToken()) //хз
     dispatch(getUser())   //прокидывает данные о user из lockalStorage в state
-    dispatch(getSelect(auth)) //получам с сервера и прокидываем в state все данные о заявках, требуеться токен
-
+    dispatch(getSelect(auth.info.accessToken)) //получам с сервера и прокидываем в state все данные о заявках, требуеться токен
   }, []);
+  
+  useEffect(() => {  
+    dispatch(getUser())   //прокидывает данные о user из lockalStorage в state
+  }, []);
+
   
   return (
     <>

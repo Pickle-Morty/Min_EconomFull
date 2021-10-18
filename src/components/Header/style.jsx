@@ -21,7 +21,7 @@ export const HeaderStyled = styled.header`
 `;
 
 export const LogoutBtn = styled.button`
-  position: fixed;
+  position: absolute;
   top: 8px;
   right: 15px;
   border: none;
