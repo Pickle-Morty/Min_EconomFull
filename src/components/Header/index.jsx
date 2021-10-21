@@ -7,6 +7,7 @@ import { STYLES } from "../../constains";
 import { Container, Row, Img, Button } from "../../styledComponents";
 import { HeaderStyled, LogoutBtn } from "./style";
 import logoutImg from "../../assets/images/logout.png";
+import { NavLink } from "react-router-dom";
 
 
 const Header = ({ role, logout, isAuth }) => {
@@ -29,18 +30,21 @@ const Header = ({ role, logout, isAuth }) => {
             className={modal && "active"}
             setActive={setModal}
           />
-          <Button
-            size="21px"
-            weight="400"
-            color={STYLES.blue}
-            border="none"
-            className="language"
-            padding="0"
-            radius="0"
-            bgHover="none"
-          >
-            KG
+          <div className="">
+            <Button
+              size="21px"
+              weight="400"
+              color={STYLES.blue}
+              border="none"
+              className="language"
+              padding="0"
+              radius="0"
+              bgHover="none"
+            >
+              KG
           </Button>
+          </div>
+
           <Burger active={modal} setActive={setModal} className="burger" />
           <Popup active={modal} setActive={setModal} />
         </Row>

@@ -9,8 +9,15 @@ export const ModalFormStyled = styled.div`
       height: 310px;
     }
   }
-  .field {
+  .field-col {
     text-align: left;
+    width: 50%;
+    padding: 0 10px;
+  }
+  .field-row {
+    text-align: left;
+    width: 100%;
+    padding: 0 10px;
   }
   .input-form, .select-form {
     margin: 0 0 20px;

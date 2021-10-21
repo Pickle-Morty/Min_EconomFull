@@ -20,11 +20,23 @@ const CustomSection = ({ setUserModal, title, text, route, setType }) => {
         <Text color={STYLES.blue}>Новый пользователь</Text>
         <Button
           bg="white"
+          className="btn__remove"
+          color={STYLES.border}
+          padding="0"
+          onClick={() => {
+            setUserModal({remove:true});
+            console.log("modalR")
+          }}
+        >
+          Удалить
+        </Button>
+        <Button
+          bg="white"
           className="btn__add"
           color={STYLES.border}
           padding="0"
           onClick={() => {
-            setUserModal(true);
+            setUserModal({create:true});
           }}
         >
           Добавить

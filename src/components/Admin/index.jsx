@@ -9,10 +9,10 @@ import CustomSection from "./CustomSection";
 import ModalUserForm from "./ModalUserForm";
 import { STYLES } from "../../constains";
 
-const Admin = ({ select, sendNewField, sendRemoveField, sendNewUser }) => {
+const Admin = ({ select, sendNewField, sendRemoveField, sendNewUser, userList, deleteUser }) => {
   const [modal, setModal] = useState(false);
   const [modalR, setModalR] = useState(false);
-  const [userModal, setUserModal] = useState(false);
+  const [userModal, setUserModal] = useState({create: false, remove:false});
   const [type, setType] = useState("organ");
   const sections = [
     {
@@ -74,7 +74,7 @@ const Admin = ({ select, sendNewField, sendRemoveField, sendNewUser }) => {
           sendRemoveField={sendRemoveField}
           modalR={modalR}
           setModalR={setModalR} />
-        <ModalUserForm userModal={userModal} select={select} setUserModal={setUserModal} sendNewUser={sendNewUser} />
+        <ModalUserForm deleteUser = {deleteUser} userList ={ userList} userModal={userModal} select={select} setUserModal={setUserModal} sendNewUser={sendNewUser} />
         <Popup active={modal} setActive={setModal} />
       </Container>
     </AdminStyled>

@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { G_ADMIN_LINKS, R_ADMIN_LINKS, USER_LINKS } from "../../../constains/links";
 import { Row } from "../../../styledComponents";
-import { getAuth } from "../../../utils";
 import { NavbarStyled } from "./style";
 
 const Navbar = ({ setActive, className }) => {
-  const role = getAuth.role()
+  const role = useSelector(state => state.auth.role)
+  
 
   const getLinks = (role) => {
     switch (role) {
-      case "GLOBAL_ADMIN":  
+      case 2:  
         return G_ADMIN_LINKS
     
       case 1:  

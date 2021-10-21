@@ -11,14 +11,16 @@ const setInfoUser = (payload) => ({ type: "CHANGE_AUTH", key: "info", payload })
 // thunks
 export const getUser = () => (dispatch) => {
     const data = JSON.parse(localStorage.getItem("auth"));
+    
     if (data) {
-        console.log('пуф')
         const role = roleFilter(data.roles[0]);
         dispatch(setAuth(true));
         dispatch(setInfoUser(data));
         dispatch(setRole(role));
     } else {
         dispatch(setAuth(false));
+        dispatch(setRole("USER"))
+        dispatch(setInfoUser({}));
     }
 };
 

@@ -5,7 +5,8 @@ const instance = axios.create({
 });
 
 export const registryAPI = {
-    get: async (uri, token) => {  
+    get: async (uri, token) => { 
+        console.log("uri:",uri) 
         const response = await instance.get(uri, {
             headers: {
                 'Authorization': `Bearer ${token}`

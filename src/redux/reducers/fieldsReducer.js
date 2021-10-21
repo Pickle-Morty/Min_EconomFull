@@ -1,8 +1,17 @@
 const initialState = {
     select: {
-        region: [],
-        organ: [],
-        activity: [],
+        region: [{
+            id: 0,
+            title: "Все регионы"
+        }],
+        organ: [{
+            id: 0,
+            title: "Все гос.органы"
+        }],
+        activity: [{
+            id: 0,
+            title: "Все отрасли"
+        }],
         cause: [],
         subject: [],
     },
@@ -13,7 +22,8 @@ const initialState = {
 const fieldsReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CHANGE_FIELDS":
-            return { ...state, [action.key]: action.payload };
+            return { ...state, 
+                [action.key]: action.payload };
         default:
             return state;
     };

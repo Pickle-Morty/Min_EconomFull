@@ -4,8 +4,7 @@ import { FormStyled } from "./style";
 const Search = ({ sort, sortRegistry, searchRegistry }) => {
   return (
     <FormStyled>
-      <input type="text"
-        placeholder="Имя, ИНН, название компаний" value={sort.search} onChange={(e) => sortRegistry({ ...sort, search: e.target.value })} />
+   
       <button onClick={searchRegistry}>
         <svg
           width="22"

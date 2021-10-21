@@ -12,17 +12,23 @@ export const HeaderStyled = styled.header`
   .language {
     border-bottom: solid 1px ${STYLES.blue};
   }
+  .header__item {
+    display: flex;
+    width: 100px;
+    justify-content:space-between;
+  }
   .burger {
     display: none;
     @media screen and (max-width: ${STYLES.breakpoints.xl}) {
       display: block;
     }
   }
+
 `;
 
 export const LogoutBtn = styled.button`
-  position: absolute;
-  top: 8px;
+ position: fixed;
+  bottom: 15px;
   right: 15px;
   border: none;
   background: white;
@@ -38,3 +44,4 @@ export const LogoutBtn = styled.button`
     right: 70px;
   }
 `;
+

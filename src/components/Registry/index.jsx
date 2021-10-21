@@ -23,7 +23,7 @@ const Registry = ({
 }) => {
   const { page } = useParams();
   const history = useHistory();
-  const token = getAuth.token(); 
+  const token = useSelector((state) => state.auth.info.accessToken);
   const getUri = (sort, page) => {
     const data = { ...sort, pageNumber: page - 1 };
     const filter = (data) => {
@@ -44,6 +44,9 @@ const Registry = ({
     getRegistry(uri, token);
   }, [page]);
 
+  useEffect(() => {
+    searchRegistry()
+  }, [sort])
 
 
   const searchRegistry = () => {
@@ -60,6 +63,11 @@ const Registry = ({
     }
   };
 
+  const changeSelect = (data) => {
+
+
+  }
+
   return isFetching ? (
     <Loader />
   ) : (
@@ -68,10 +76,10 @@ const Registry = ({
           <Title margin="0 0 12px" color={STYLES.blue} weight="700" size="24px">
             Заявки:
         </Title>
-          {role ? (
+          {role == 2 ? (
             <>
-              <Sort {...select} sortRegistry={sortRegistry} sort={sort} />
-              <Search sortRegistry={sortRegistry} sort={sort} searchRegistry={searchRegistry} />
+            <Sort {...select} sortRegistry={sortRegistry} sort={sort} />
+             
             </>
           ) : (
               <Search sortRegistry={sortRegistry} sort={sort} searchRegistry={searchRegistry} />

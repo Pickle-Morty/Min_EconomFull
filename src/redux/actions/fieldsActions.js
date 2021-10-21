@@ -10,6 +10,7 @@ export const getSelect = (token) => (dispatch) => {
     dispatch(isFetching(true));
     fieldsAPI.getAll(token).then((values) => {
         dispatch(isFetching(false));
+        console.log("values",values)
         dispatch(setSelect(values));
     }).catch((err) => {
         dispatch(isFetching(false));

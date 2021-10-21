@@ -11,6 +11,7 @@ import { STYLES } from "../../constains";
 import { HomeStyled } from "./style";
 import { getAuth } from "../../utils";
 import { AdminContainer } from "../../containers";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const links = [
@@ -22,15 +23,16 @@ const Home = () => {
     { text: "Бизнес-омбудсмен Кыргызской Республики", link: "/" },
   ];
 
-  const role = getAuth.role()
+
+  const role = useSelector(state => state.auth.role) 
 
   switch (role) {
-    case "GLOBAL_ADMIN":
+    case 2:
       return <AdminContainer />
     case 1:
       return 
 
-    default:
+    default :
       return (
         <HomeStyled>
           <Container className="container">

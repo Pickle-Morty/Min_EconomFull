@@ -29,7 +29,7 @@ export const BurgerStyled = styled.div`
         : `top: 25%;`}
   }
   span {
-    ${({ active }) => (active ? "opacity: 0;" : "top: 45%;")}
+    ${({ active }) => (active ? "display: none;" : "top: 45%;")}
   }
   &::before {
     ${({ active }) =>
