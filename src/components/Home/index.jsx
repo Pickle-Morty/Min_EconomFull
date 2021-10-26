@@ -10,7 +10,7 @@ import {
 import { STYLES } from "../../constains";
 import { HomeStyled } from "./style";
 import { getAuth } from "../../utils";
-import { AdminContainer } from "../../containers";
+import { AdminContainer, RegistryContainer } from "../../containers";
 import { useSelector } from "react-redux";
 
 const Home = () => {
@@ -24,15 +24,18 @@ const Home = () => {
   ];
 
 
-  const role = useSelector(state => state.auth.role) 
+  const role = useSelector(state => state.auth.role)
 
   switch (role) {
     case 2:
       return <AdminContainer />
     case 1:
-      return 
+      return (
+       <RegistryContainer />
+      )
 
-    default :
+
+    default:
       return (
         <HomeStyled>
           <Container className="container">

@@ -41,6 +41,22 @@ const Form = ({
         onChange={routeRole}
         defaultValue={ROLES[1]}
       />
+      <Label>Контакный телефон:</Label>
+      <Field
+        component={InputForm}
+        name="telephone"
+        type="tel"
+        validate={[validField, maxLengthInput, minLength]}
+        placeholder="Введите контактный телефон"
+      />
+      <Label>Электронная почта:</Label>
+      <Field
+        component={InputForm}
+        name="email"
+        validate={[validField, maxLengthInput, minLength]}
+        placeholder="Введите электронную почту"
+        type="email"
+      />
       <Label>ИНН:</Label>
       <Field
         component={InputForm}

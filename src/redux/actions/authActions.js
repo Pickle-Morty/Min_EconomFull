@@ -13,6 +13,7 @@ export const getUser = () => (dispatch) => {
     const data = JSON.parse(localStorage.getItem("auth"));
     
     if (data) {
+        console.log(data)
         const role = roleFilter(data.roles[0]);
         dispatch(setAuth(true));
         dispatch(setInfoUser(data));
