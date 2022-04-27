@@ -12,6 +12,9 @@ export const ModalFormStyled = styled.div`
   .field {
     text-align: left;
   }
+  .modal__title {
+    margin-bottom: 10px;
+  }
   .input-form, .select-form {
     margin: 0 0 20px;
   }

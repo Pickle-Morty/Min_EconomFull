@@ -18,6 +18,30 @@ import {
 } from "../../../utils";
 import FormRequest from "../FormStyles";
 import { ROLES, CONDITIONS, STYLES } from "../../../constains";
+import S3FileUpload from 'react-s3';
+ 
+//Optional Import
+import { uploadFile } from 'react-s3';
+
+
+
+
+const config = {
+  bucketName: 'min0econom0bucket',
+  dirName: 'photos', /* optional */
+  region: 'eu-north-1',
+  accessKeyId: 'AKIAZEWV3R7NDYLH5WMC',
+  secretAccessKey: '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',
+}
+
+const onUpload = (e) => {
+  console.log(e.target.files[0])
+  const file = e.target.files[0]
+  uploadFile(file, config)
+    .then(data => console.log("все ок",data))
+    .catch(err => console.error(err))
+}
+
 const minLength = validFieldMin(2);
 const maxLengthInput = validFieldMax(30);
 const maxLengthTextarea = validFieldMax(1000);
@@ -30,7 +54,9 @@ const Form = ({
   organ,
   cause,
   subject,
-}) => {
+  
+}, props) => {
+  console.log("Props подачи заявок:" )
   return (
     <FormRequest onSubmit={handleSubmit}>
       <Label>Заявитель:</Label>
@@ -118,7 +144,7 @@ const Form = ({
       <Label>Как и кем по вашему должна решится ваша проблема? </Label>
       <Field component={TextareaForm} name="clarification" />
       <Field component={FileForm} type="file" name="file" />
-      <Condition data={CONDITIONS} />
+      <Condition  data={CONDITIONS} />
       <div className="request-form--checkbox">
         <Field
           component={CheckboxForm}

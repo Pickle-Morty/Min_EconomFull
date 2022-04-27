@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Label, Text } from "../../styledComponents";
 import { STYLES } from "../../constains";
 import { FileStyled } from "./style";
@@ -11,13 +11,20 @@ const FileForm = ({ input, meta }) => {
     const data = new FormData();
     const file = e.target.files[0];
     data.append("files", file);
-    setValues([...values, data]);
-    input.onChange(data);
+    console.log( "файл принят:",file)
+    setValues([...values, file]);
+
   };
+
+  useEffect(
+    ()=> {
+      input.onChange(values);
+    }, [values]
+  )
 
   return (
     <FileStyled className="file-form" error={hasError}>
-      <input type="file" id="document-form" onChange={getValues} multiple />
+      <input type="file" id="document-form"  onChange={getValues} multiple />
       <Label htmlFor="document-form">
         <svg
           width="29"

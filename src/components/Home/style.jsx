@@ -7,7 +7,7 @@ export const HomeStyled = styled.section`
   background-image: url(${bg});
   background-position: center;
   width: 100%;
-  min-height: 90.3vh;
+  min-height: 91.3vh;
   padding: 90px 0 50px;
   position: relative;
   .container {

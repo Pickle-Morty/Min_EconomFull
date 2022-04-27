@@ -4,14 +4,13 @@ import { Table } from "../../common";
 import { STYLES, COLUMNS } from "../../constains";
 import Cart from "./Cart";
 import Sort from "./Sort";
-import Search from "./Search";
 import { useParams, useHistory } from "react-router-dom";
 import { Loader } from "../../common";
 import { RegisrtyStyled, LinkPage } from "./style";
-import { getAuth, parseParams } from "../../utils";
 import { useSelector } from "react-redux";
 
 const Registry = ({
+  type,
   dots,
   list,
   isFetching,
@@ -25,13 +24,15 @@ const Registry = ({
   const history = useHistory();
   const token = useSelector((state) => state.auth.info.accessToken);
   const getUri = (sort, page) => {
-    const data = { ...sort, pageNumber: page - 1 };
+    let data = { ...sort, pageNumber: {value: page - 1} };
+    if (type!="public") {
+      data = {...data,"status.id":{ value: type } }
+    }
     const filter = (data) => {
       let customUri = '/search?pageSize=6'
       Object.keys(data).map(property => {
         if (data[property]) {
-          console.log(property, ":", data[property])
-          customUri = customUri + `&${property}=${data[property]}`
+          customUri = customUri + `&${property}=${data[property].value}`
         }
       })
       return customUri
@@ -39,19 +40,19 @@ const Registry = ({
     return filter(data)
   }
 
+
+
   useEffect(() => {
     let uri = getUri(sort, page)
     getRegistry(uri, token);
-  }, [page]);
+  }, [page, type]);
 
-  useEffect(() => {
-    searchRegistry()
-  }, [sort])
+
 
 
   const searchRegistry = () => {
     const uri = getUri(sort, page)
-    history.push(`/registry` + uri)
+    sortRegistry(({region: '', organ: '', economicActivity: '', cause: ''}))
     getRegistry(uri, token);
   };
 
@@ -63,10 +64,9 @@ const Registry = ({
     }
   };
 
-  const changeSelect = (data) => {
-
-
-  }
+  useEffect(() => {
+    searchRegistry()
+  }, [])
 
   return isFetching ? (
     <Loader />
@@ -75,15 +75,12 @@ const Registry = ({
         <Container padding="25px 15px">
           <Title margin="0 0 12px" color={STYLES.blue} weight="700" size="24px">
             Заявки:
-        </Title>
+          </Title>
           {role == 2 ? (
             <>
-            <Sort {...select} sortRegistry={sortRegistry} sort={sort} />
-             
+              <Sort {...select} sortRegistry={sortRegistry} sort={sort} searchRegistry = {searchRegistry} />
             </>
-          ) : (
-              <Search sortRegistry={sortRegistry} sort={sort} searchRegistry={searchRegistry} />
-            )}
+          ) : null}
           {list.length ? (
             <Table data={list} columns={COLUMNS} onClick={setRequest} />
           ) : (
@@ -101,7 +98,7 @@ const Registry = ({
               <LinkPage
                 key={item}
                 className={+page === item ? "active" : ""}
-                to={`/registry/${item}`}
+                to={`/registry/${type}/${item}`}
               >
                 {item}
               </LinkPage>

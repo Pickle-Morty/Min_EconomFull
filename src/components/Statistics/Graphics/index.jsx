@@ -20,6 +20,7 @@ const Graphics = ({
     responsive: true,
     maintainAspectRatio: false,
   };
+  console.log("date:",data)
   return <Pie data={data} width={400} height={400} options={options} />;
 };
 

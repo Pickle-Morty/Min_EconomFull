@@ -9,6 +9,9 @@ export const ModalRemoveStyled = styled.div`
       height: 310px;
     }
   }
+  .modal__title {
+    margin-bottom: 10px;
+  }
   .field {
     text-align: left;
   }

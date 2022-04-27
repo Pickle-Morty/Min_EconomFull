@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { InputForm, SelectForm } from "../../../../common";
 import { Button, Label, Row } from "../../../../styledComponents";
 import { STYLES } from "../../../../constains";
-import { changeSelect } from "../../../../utils";
+
 
 const Form = ({ handleSubmit, type, content, select }) => {
   const typeSelect = select[type];
@@ -23,7 +23,7 @@ const Form = ({ handleSubmit, type, content, select }) => {
           bg={STYLES.red}
           padding="9px 53px"
         >
-          Клик
+          Удалить
         </Button>
         
       </Row>

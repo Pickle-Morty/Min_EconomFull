@@ -9,6 +9,9 @@ export const ModalFormStyled = styled.div`
       height: 310px;
     }
   }
+  .modal__title {
+    margin-bottom: 10px;
+  }
   .field-col {
     text-align: left;
     width: 50%;

@@ -6,6 +6,7 @@ const InputForm = ({ input, meta, ...props }) => {
   return (
     <InputStyled error={hasError} className="input-form">
       <input type="text" {...input} {...props} />
+      {/* {meta.error && <span>{meta.error}</span>} */}
     </InputStyled>
   );
 };

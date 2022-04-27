@@ -32,9 +32,10 @@ const styles = {
   }),
 };
 
-const SelectTag = ({ options, placeholder, className, onChange }) => {
+const SelectTag = ({ options, placeholder, className, onChange, value }) => {
   return (
     <Select
+      value = {value}
       options={changeSelect(options)}
       className={className}
       styles={styles}

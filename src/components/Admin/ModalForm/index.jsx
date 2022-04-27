@@ -15,15 +15,15 @@ const ModalForm = ({ modal, setModal, modalR, setModalR, select, content, type, 
     <ModalFormStyled>
       <Modal
         width="436px"
-        height="386px"
+        height="auto"
         active={modal}
         setActive={setModal}
         radius="20px"
         className="modal"
-        padding="35px 23px"
+        padding="36px 23px 46px 23px"
       >
-        <Text className="title" color={STYLES.blue} weight="bold" size="23px">
-         {content.title}
+        <Text className="modal__title" color={STYLES.blue} weight="bold" size="23px">
+        {"Добавить" + content.title}
         </Text>
         <Form select={select} onSubmit={addNewField} content={content} type={type} />
         <Button

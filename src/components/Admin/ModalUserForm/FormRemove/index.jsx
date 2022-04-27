@@ -11,13 +11,8 @@ const roles = [
 
 
 const FormRemove = ({ handleSubmit, type, content, select, userList }) => {
-  const typeSelect = {
-    organ: select["organ"], role: roles, region: select["region"]
-  } 
-  console.log(select)
   return (
-    <form onSubmit={handleSubmit}>
-     
+    <form onSubmit={handleSubmit}>  
       <Row>
         <div className="field-row">
           <Label>Список пользователей</Label>

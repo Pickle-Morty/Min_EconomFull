@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Login } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/actions/authActions";
@@ -8,12 +8,14 @@ const LoginContainer = () => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const history = useHistory();
-
+  console.log(auth)
   const onSubmit = (data) => {
-    console.log(data)
-    dispatch(login(data));
-    history.push("/");
+    dispatch(login(data, history));
+    // history.push("/");
   };
+  useEffect(()=>{
+    console.log("auth",auth)
+  },[auth])
   return <Login {...auth} onSubmit={onSubmit} />;
 };
 

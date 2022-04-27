@@ -21,11 +21,13 @@ const Request = ({
   request,
   changeCause,
   postStatus,
+  
 }) => {
   const [panel, setPanel] = useState(false);
   const [changeStatus, setChangeStatus] = useState(true);
   const history = useHistory();
   const { id } = useParams();
+  const {attachment} = request 
 
   useEffect(() => {
     getRequest(+id);
@@ -39,7 +41,7 @@ const Request = ({
   return isGetRequest ? (
     <Loader />
   ) : (
-      <RequestStyled files={request?.file}>
+      <RequestStyled attachment={request?.attachment}>
         <Container padding="25px 15px">
           <Topline
             panel={panel}
@@ -58,7 +60,7 @@ const Request = ({
             >
               {request.problemOfDescription}
             </textarea>
-            {request?.file && <Document files={request?.file} />}
+            {request?.attachment && <Document files={request?.attachment}  />}
           </Row>
           {
             !changeStatus ? (
@@ -68,12 +70,10 @@ const Request = ({
                 </Text>
                 <Row wrap className="field" justify="flex-start">
                   <textarea
-                    placeholder="Описание фактора"
+                    placeholder="Причина отказа"
                     onInput={(e) => changeCause({ ...request, problemOfDescription: e.target.value })}
                   >
-                    {request.problemOfDescription}
                   </textarea>
-                  {request?.file && <Document files={request?.file} />}
                 </Row>
               </div>
             ) : (

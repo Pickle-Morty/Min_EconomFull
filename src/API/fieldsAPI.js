@@ -51,11 +51,16 @@ export const fieldsAPI = {
         return response.data;
     },
     remove: async (body, type) => {///region/delete/6
-        const response = await instance.post(`${type}/delete/${body}`, );
         console.log(
             "type:" + type +
             "\nbody: " + body
         )
+        if (type == "activity") {
+            const response = await instance.delete(`${type}/delete/${body}` );
+            return response.data
+        }
+        const response = await instance.post(`${type}/delete/${body}`);
+        
         return response.data;
     },
     getAll: async (token) => {

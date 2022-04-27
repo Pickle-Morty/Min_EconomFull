@@ -4,7 +4,7 @@ import { STYLES } from "../../constains";
 export const InputStyled = styled.div`
   position: relative;
   height: 43px;
-  overflow: hidden; 
+  overflow: ${({ error }) => (!error && "hidden" )}  ; 
   width: 100%;
   input {
     padding: 11px 14px;

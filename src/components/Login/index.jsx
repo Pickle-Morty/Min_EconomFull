@@ -6,9 +6,20 @@ import { STYLES } from "../../constains";
 import { FormStyled } from "./style";
 import { validFieldMin, validField } from "../../utils";
 
+import { SubmissionError } from 'redux-form'
+
 const minLength = validFieldMin(2);
 
-const Form = ({ handleSubmit, error, isLogin }) => {
+const submitValid = (values) => {
+  console.log("Валидация:", values)
+  throw new SubmissionError({
+    _error: 'Login failed!'
+  })
+
+}
+
+const Form = (props) => {
+  const { handleSubmit, isLogin, error } = props
   return (
     <FormStyled onSubmit={handleSubmit}>
       <Row className="row" justify="center" align="center" padding="0 15px">
@@ -38,6 +49,7 @@ const Form = ({ handleSubmit, error, isLogin }) => {
             placeholder="**************"
             name="password"
           />
+
           <div className="btn">
             <Button
               bg={STYLES.blue}
@@ -55,6 +67,7 @@ const Form = ({ handleSubmit, error, isLogin }) => {
               Неверный логин или пароль
             </Text>
           )}
+
         </div>
       </Row>
     </FormStyled>
@@ -65,8 +78,10 @@ const Login = reduxForm({
   form: "login",
 })(Form);
 
-const FormLogin = ({ onSubmit, ...props }) => (
-  <Login {...props} onSubmit={onSubmit} />
+const FormLogin = ({ error, onSubmit, ...props }) => (
+  <Login {...props} error={error} onSubmit={onSubmit} />
 );
 
 export default FormLogin;
+
+

@@ -75,7 +75,6 @@ const Admin = ({ select, sendNewField, sendRemoveField, sendNewUser, userList, d
           modalR={modalR}
           setModalR={setModalR} />
         <ModalUserForm deleteUser = {deleteUser} userList ={ userList} userModal={userModal} select={select} setUserModal={setUserModal} sendNewUser={sendNewUser} />
-        <Popup active={modal} setActive={setModal} />
       </Container>
     </AdminStyled>
   );

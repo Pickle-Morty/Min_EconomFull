@@ -10,7 +10,7 @@ const Form = ({ handleSubmit, type, content, select }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="field">
-        <Label>Название</Label>
+        <Label className ="modal__title">Название</Label>
         <Field name="field" component={InputForm} />
 
       </div>

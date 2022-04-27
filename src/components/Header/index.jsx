@@ -14,6 +14,7 @@ const Header = ({ role, logout, isAuth }) => {
   const [modal, setModal] = useState(false);
   const history = useHistory();
 
+  
   const exitAccount = () => {
     logout();
     history.push("/");

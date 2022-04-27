@@ -7,6 +7,8 @@ const RequestContainer = () => {
   const dispatch = useDispatch();
   const { registry, auth } = useSelector((state) => state);
 
+  console.log(registry)
+
   return (
     <Request
       {...registry}

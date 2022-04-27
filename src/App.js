@@ -34,7 +34,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route path="/requestForm" component={FormContainer} />
         <Route path="/success/:status" component={SuccessContainer} />
-        <Route path="/registry/:page" component={RegistryContainer} />
+        <Route exact path="/registry/:type?/:page?" component={RegistryContainer} />
         <Route path="/request/:id" component={RequestContainer} />
         <Route path="/login" component={LoginContainer} />
         <Route path="/statistics" component={StatisticsContainer} />
